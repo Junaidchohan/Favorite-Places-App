@@ -1,4 +1,3 @@
-import 'package:facorite_places/main.dart';
 import 'package:facorite_places/model/place.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +8,9 @@ class PlacesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (places.isEmpty) {
-      return Center(child: Text("No Places yet added"));
+      return Center(child: Text("No Places yet added", style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),));
     }
     return ListView.builder(
       itemCount: places.length,
