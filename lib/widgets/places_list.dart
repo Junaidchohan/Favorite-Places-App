@@ -1,4 +1,5 @@
 import 'package:facorite_places/model/place.dart';
+import 'package:facorite_places/screens/place_detail.dart';
 import 'package:flutter/material.dart';
 
 class PlacesList extends StatelessWidget {
@@ -8,9 +9,14 @@ class PlacesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (places.isEmpty) {
-      return Center(child: Text("No Places yet added", style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-              ),));
+      return Center(
+        child: Text(
+          "No Places yet added",
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+      );
     }
     return ListView.builder(
       itemCount: places.length,
@@ -22,6 +28,13 @@ class PlacesList extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => PlaceDetailScreen(place: places[index]),
+                ),
+              );
+            },
           ),
     );
   }
